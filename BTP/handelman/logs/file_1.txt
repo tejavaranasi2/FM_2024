@@ -1,0 +1,15 @@
+1 no
+2 no
+3 no
+4  no
+5  yes (25 min) 
+6  no
+7  yes (~26 min)
+8   no
+9   no
+10  yes (28 min)
+11   no
+12  no
+13   no
+14   yes (28 min)
+15    no

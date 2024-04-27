@@ -1,0 +1,18 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-datatypes ((RealState 0)) (((RMk1 (rval1 Real)) (RMk2 (rval2 Real)))))
+ (assert
+ (forall ((|v9:0| Real) )(exists ((|v8:1_st| RealState) (val!170 Real) )(forall ((|v7:2| Real) )(exists ((|v6:3_st| RealState) (val!171 Real) )(forall ((|v5:4| Real) )(exists ((|v4:5_st| RealState) (val!172 Real) )(forall ((|v3:6| Real) )(exists ((|v2:7_st| RealState) (val!173 Real) )(forall ((|v1:8| Real) )(exists ((|v0:9_st| RealState) (val!174 Real) )(let ((?x300 (+ (+ (* (- 10.0) |v3:6|) (* (- 10.0) |v5:4|)) (* 18.0 (rval2 |v6:3_st|)))))
+ (let (($x945 (not (= |v0:9_st| (RMk1 val!174)))))
+ (and (not (= |v8:1_st| (RMk1 val!170))) (not (= |v6:3_st| (RMk1 val!171))) (not (= |v4:5_st| (RMk1 val!172))) (not (= |v2:7_st| (RMk1 val!173))) $x945 (<= ?x300 4.0)))))
+ )
+ )
+ )
+ )
+ )
+ )
+ )
+ )
+ )
+ )
+(check-sat)

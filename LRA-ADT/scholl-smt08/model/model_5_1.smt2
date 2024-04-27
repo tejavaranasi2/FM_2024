@@ -1,0 +1,17 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-fun x4 () Real)
+(declare-fun x3 () Real)
+(declare-fun bool.b19 () Bool)
+(declare-fun bool.b18 () Bool)
+(declare-fun bool.b17 () Bool)
+(assert
+ (forall ((?lambda Real) )(let (($x9252 (and (<= (* 1.0 (+ x3 (* 0.0 ?lambda))) 0.0) (not (<= (* 1.0 (+ x4 (* 30.0 ?lambda))) 4820.0)))))
+ (let (($x26533 (exists ((?lambdaprime Real) )(! (let (($x24325 (and bool.b19 (<= (* (- 1.0) (+ x4 (* 30.0 ?lambdaprime))) (- 4910.0)))))
+ (let (($x17672 (and bool.b18 (<= (* (- 1.0) (+ x4 (* 30.0 ?lambdaprime))) (- 4500.0)))))
+ (let (($x39105 (and bool.b17 (<= (* (- 1.0) (+ x4 (* 30.0 ?lambdaprime))) (- 4100.0)))))
+ (and (and (<= 0.0 ?lambdaprime) (<= ?lambdaprime ?lambda)) (not (and (and (not $x39105) (not $x17672)) (not $x24325))))))) :qid k!20))
+ ))
+ (or (or $x26533 (< ?lambda 0.0)) (not $x9252)))))
+ )
+(check-sat)

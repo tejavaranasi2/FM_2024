@@ -1,0 +1,16 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-datatypes ((RealState 0)) (((RMk1 (rval1 Real)) (RMk2 (rval2 Real)))))
+ (declare-fun x1 () Real)
+(assert
+ (let (($x11639 (exists ((?y2_st RealState) (val!334 Real) )(forall ((?y3 Real) )(let ((?x17389 (- 31.0)))
+ (let (($x10552 (= (+ (+ (* 31.0 ?y3) (* (- 96.0) (rval2 ?y2_st))) (* 67.0 x1)) ?x17389)))
+ (let (($x7158 (and (not $x10552) (= (+ (* 81.0 ?y3) (* (- 23.0) (rval2 ?y2_st))) (- 21.0)))))
+ (let (($x853 (not (= ?y2_st (RMk1 val!334)))))
+ (and $x853 $x7158))))))
+ )
+ ))
+ (let (($x11296 (forall ((?y3 Real) )(or (< (+ (* (- 14.0) ?y3) (* 49.0 x1)) 94.0) (> (+ (* 88.0 ?y3) (* 83.0 x1)) 14.0)))
+ ))
+ (and $x11296 $x11639))))
+(check-sat)

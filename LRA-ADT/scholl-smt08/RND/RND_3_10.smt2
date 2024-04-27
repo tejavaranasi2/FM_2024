@@ -1,0 +1,16 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-fun x1 () Real)
+(assert
+ (forall ((?y2 Real) )(let (($x8971 (exists ((?y3 Real) )(! (= (+ (+ (* (- 28.0) ?y3) (* (- 87.0) ?y2)) (* 44.0 x1)) 51.0) :qid k!16))
+ ))
+ (let (($x8539 (forall ((?y3 Real) )(! (let (($x10206 (> (+ (+ (* 36.0 ?y3) (* 97.0 ?y2)) (* (- 41.0) x1)) (- 55.0))))
+ (and (not (= (* 30.0 ?y3) 29.0)) $x10206)) :qid k!16))
+ ))
+ (let (($x9873 (exists ((?y3 Real) )(! (let (($x5901 (= (+ (+ (* 34.0 ?y3) (* (- 9.0) ?y2)) (* 19.0 x1)) 0.0)))
+ (let (($x3244 (< (+ (+ (* 28.0 ?y3) (* (- 38.0) ?y2)) (* 1.0 x1)) (- 17.0))))
+ (or $x3244 (not $x5901)))) :qid k!16))
+ ))
+ (or (or $x9873 $x8539) $x8971)))))
+ )
+(check-sat)
