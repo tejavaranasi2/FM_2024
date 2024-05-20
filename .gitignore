@@ -10,6 +10,10 @@ gridding/handelman/tests/nra_adt/nra_adt_modified/**
 gridding/handelman/tests/nra_adt/nra_adt_with_bounds/**
 gridding/handelman/tests/nra_adt/nra_adt_poqer/**
 gridding/handelman/tests/nra_adt/nra_adt_results_2/**
+!gridding/handelman/tests/nra_adt/nra_adt_modified/.gitkeep
+!gridding/handelman/tests/nra_adt/nra_adt_with_bounds/.gitkeep
+!gridding/handelman/tests/nra_adt/nra_adt_poqer/.gitkeep
+!gridding/handelman/tests/nra_adt/nra_adt_results_2/.gitkeep
 gridding/handelman/tests/dump
 gridding/handelman/tests/dump3
 gridding/handelman/tests/dump4
@@ -17,6 +21,8 @@ gridding/handelman/tests/run_test.sh
 gridding/handelman/tests/test_analysis.ipynb
 gridding/handelman/tests/results/**
 gridding/handelman/logs/**
+!gridding/handelman/tests/results/.gitkeep
+!gridding/handelman/logs/.gitkeep
 yices-2.6.4
 gurobi.lic
 gurobi
