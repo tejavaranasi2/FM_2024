@@ -1,0 +1,48 @@
+class Solution {
+public:
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+        int n=graph.size();
+        vector<vector<int>> adj(n,vector<int>(n,0));
+        vector<int> term;
+        for(int i=0;i<n;i++){
+            for(auto& ed: graph[i]){
+                adj[ed][i]=1;
+            }
+            if(graph[i].size()==0){
+                term.push_back(i);
+            }
+        }
+
+        vector<int> ans;
+        vector<bool> visited(n,false);
+        for(auto& nd: term){
+            if(!visited[nd]){
+               dfs(nd,visited,adj);
+            }
+        }
+
+        for(int i=0;i<n;i++){
+            if(visited[i]){
+                ans.push_back(i);
+            }
+        }
+
+
+        return ans;
+
+        
+
+
+
+    }
+
+    void dfs(int nd,vector<bool> &visited,vector<vector<int>> &adj){
+        visited[nd]=true;
+        for(int i=0;i<visited.size();i++){
+            if(adj[nd][i] && !visited[i]){
+                dfs(i,visited,adj);
+            }
+        }
+
+    }
+};

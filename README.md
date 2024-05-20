@@ -10,7 +10,7 @@
 
 # building gurobi
     Gurobi needs a license file that you need to place in the $PROJ_HOME folder
-    If this doesnt work, download and replace $PROJ_HOME/opt 
+    If this doesnt work, download and replace $PROJ_HOME/opt (or change the path in makefile)
 
 
 
@@ -87,17 +87,7 @@
         '''expr_func_declare : LPAREN DECLARE_FUN SYMBOL LPAREN RPAREN SYMBOL RPAREN'''
         '''expr_exists : LPAREN EXISTS LPAREN var_list RPAREN expr_and_bool RPAREN'''
         '''expr_forall : LPAREN FORALL LPAREN var_list RPAREN expr_and_bool RPAREN'''
-   ## Method to run a test case 
-        cd {proj_home}/BTP/handelman/tests
-        python run.py <smt_file_path> <epsilon> <bounds>
-    
-
-
-   ## Understanding the output
-        in the folder {proj_home}/BTP/handelman/tests,one can find nra_adt folder.
-        * Running run.py produces two files in two folders, purposes of which are given below:
-        -> nra_adt_poqer: <smt_file_name>_poqer.smt2 file contains the poqer aided smt2 file
-        -> nra_adt_with_bounds: <smt_file_name>_with_bounds.smt2 contatins the bounded version of the problem formulation
+  
     
 
 
