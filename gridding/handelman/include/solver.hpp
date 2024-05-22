@@ -5,7 +5,7 @@
 #include "expr.hpp"
 #include "z3++.h"
 #include <set>
-#include <yices.h>
+//#include <yices.h>
 #include <utility>
 #include <thread>
 #include <chrono>
@@ -24,7 +24,7 @@ class solver{
     std::vector<multinomial*> eq;
     
     std::vector<z3::expr> e;
-    std::vector<term_t> e_yices;
+    //std::vector<term_t> e_yices;
     std::vector<multinomial*> ineq;
     std::vector<z3::expr> mod_constraints;
 
@@ -145,68 +145,68 @@ class solver{
             
             
 
-            yices_init();
-            ctx_config_t* config= yices_new_config();
-            yices_set_config(config, "solver-type", "mcsat");
-            yices_default_config_for_logic(config,"QF_NIA");
+            // yices_init();
+            // ctx_config_t* config= yices_new_config();
+            // yices_set_config(config, "solver-type", "mcsat");
+            // yices_default_config_for_logic(config,"QF_NIA");
 
-            context_t *ctx=yices_new_context(config);
+            // context_t *ctx=yices_new_context(config);
 
-
-            
 
             
-            for(int i=0;i<n;i++){
-                const char* myCString = ("var_"+std::to_string(i)).c_str();
-                term_t t = yices_new_uninterpreted_term(yices_real_type());
-                yices_set_term_name(t,myCString);
-                e_yices.push_back(t);
-            }
-            //add equations to solver::
-            for(auto &a: eq){
-                print_vector(a->print());
-                term_t e_=print_sym_yices(*a);
-                // std::cout<<"yices Term:\n------------------------------";
-                // yices_pp_term(stdout, e_, 80, 8, 0);
-                // std::cout<<"===============\n";
-                yices_assert_formula(ctx,yices_arith_eq_atom(e_,yices_zero()));
-            }
-            if(silent){
-            std::cout<<"INEQ===========\n============\n";
-            }
-            for(auto &a: ineq){
-                print_vector(a->print());
-                term_t e_=print_sym_yices(*a);
-                //std::cout<<e_;
-                yices_assert_formula(ctx,yices_arith_geq_atom(e_,yices_zero()));
-            }
-            auto result = yices_check_context(ctx, NULL);
-            if (result == STATUS_SAT) {
-                if(silent){
-                std::cout << "Satisfiable\n";
-                }
-                // Access the value of the real variable in the model
-                auto model = yices_get_model(ctx,1);
-                for(auto& a: v->mp){
-                    if(silent){
-                        double value;
-                        if (yices_get_double_value(model, e_yices[a.second], &value) == 0) {
-                           std::cout << a.first << "=" << value << "\n";
-                        }
-                    }
-                }
-            } else if (result == STATUS_UNSAT) {
-                if(silent){
-                std::cout << "Not satisfiable\n";
-                }
-            } else {
-                if(silent){
-                std::cout << "Solver result: " << result << "\n";
-                }
-            }
 
-            yices_free_context(ctx);
-            yices_exit();
+            
+            // for(int i=0;i<n;i++){
+            //     const char* myCString = ("var_"+std::to_string(i)).c_str();
+            //     term_t t = yices_new_uninterpreted_term(yices_real_type());
+            //     yices_set_term_name(t,myCString);
+            //     e_yices.push_back(t);
+            // }
+            // //add equations to solver::
+            // for(auto &a: eq){
+            //     print_vector(a->print());
+            //     term_t e_=print_sym_yices(*a);
+            //     // std::cout<<"yices Term:\n------------------------------";
+            //     // yices_pp_term(stdout, e_, 80, 8, 0);
+            //     // std::cout<<"===============\n";
+            //     yices_assert_formula(ctx,yices_arith_eq_atom(e_,yices_zero()));
+            // }
+            // if(silent){
+            // std::cout<<"INEQ===========\n============\n";
+            // }
+            // for(auto &a: ineq){
+            //     print_vector(a->print());
+            //     term_t e_=print_sym_yices(*a);
+            //     //std::cout<<e_;
+            //     yices_assert_formula(ctx,yices_arith_geq_atom(e_,yices_zero()));
+            // }
+            // auto result = yices_check_context(ctx, NULL);
+            // if (result == STATUS_SAT) {
+            //     if(silent){
+            //     std::cout << "Satisfiable\n";
+            //     }
+            //     // Access the value of the real variable in the model
+            //     auto model = yices_get_model(ctx,1);
+            //     for(auto& a: v->mp){
+            //         if(silent){
+            //             double value;
+            //             if (yices_get_double_value(model, e_yices[a.second], &value) == 0) {
+            //                std::cout << a.first << "=" << value << "\n";
+            //             }
+            //         }
+            //     }
+            // } else if (result == STATUS_UNSAT) {
+            //     if(silent){
+            //     std::cout << "Not satisfiable\n";
+            //     }
+            // } else {
+            //     if(silent){
+            //     std::cout << "Solver result: " << result << "\n";
+            //     }
+            // }
+
+            // yices_free_context(ctx);
+            // yices_exit();
         }
         else if(solver_type=="pgd"){
             handelman::expr lgr;
@@ -543,61 +543,61 @@ class solver{
         return ans;
     }
 
-    term_t print_sym_yices(multinomial& m){
-        //term_t ans=yices_zero();
-        std::vector<term_t> ans;
-        ans.push_back(yices_zero());
+    // term_t print_sym_yices(multinomial& m){
+    //     //term_t ans=yices_zero();
+    //     std::vector<term_t> ans;
+    //     ans.push_back(yices_zero());
 
-        // std::cout<<"yices Term:\n------------------------------";
-        // yices_pp_term(stdout, ans[ans.size()-1], 80, 8, 0);
-        // std::cout<<"===============\n";
+    //     // std::cout<<"yices Term:\n------------------------------";
+    //     // yices_pp_term(stdout, ans[ans.size()-1], 80, 8, 0);
+    //     // std::cout<<"===============\n";
 
 
-        // std::cout<<"yices Term:\n------------------------------";
-        // yices_pp_term(stdout, yices_zero(), 80, 8, 0);
-        // std::cout<<"===============\n";
+    //     // std::cout<<"yices Term:\n------------------------------";
+    //     // yices_pp_term(stdout, yices_zero(), 80, 8, 0);
+    //     // std::cout<<"===============\n";
 
-        // term_t temp_=yices_zero();
-        // std::cout<<"yices Term:\n------------------------------";
-        // yices_pp_term(stdout, temp_ ,80, 8, 0);
-        // std::cout<<"===============\n";
+    //     // term_t temp_=yices_zero();
+    //     // std::cout<<"yices Term:\n------------------------------";
+    //     // yices_pp_term(stdout, temp_ ,80, 8, 0);
+    //     // std::cout<<"===============\n";
 
-        if(m.prim_key==NULL){
+    //     if(m.prim_key==NULL){
             
 
-                int64_t numerator = static_cast<int64_t>(((double)(*(double*)m.mp[0])) * 100);  // Scale by 100 for two decimal places
-                int64_t denominator = 100;
+    //             int64_t numerator = static_cast<int64_t>(((double)(*(double*)m.mp[0])) * 100);  // Scale by 100 for two decimal places
+    //             int64_t denominator = 100;
 
-                // Create a rational term representing x
-                term_t term = yices_rational64(numerator, denominator);
-                ans.push_back(term);
+    //             // Create a rational term representing x
+    //             term_t term = yices_rational64(numerator, denominator);
+    //             ans.push_back(term);
 
-        }
-        else{
-            for(auto &a:m.mp){
+    //     }
+    //     else{
+    //         for(auto &a:m.mp){
                     
                 
-                term_t temp=print_sym_yices(*(multinomial*)(a.second));
-                // std::cout<<"yices Term:\n------------------------------";
-                // yices_pp_term(stdout, temp, 80, 8, 0);
-                // std::cout<<"===============\n";
-                if(a.first==0){
-                    term_t temp_ans=yices_add(ans[ans.size()-1],temp);
-                    ans.push_back(temp_ans);
-                }
-                else{
-                    term_t pw_e=yices_power(e_yices[m.prim_key->get_id()],a.first);
-                    ans.push_back(yices_add(ans[ans.size()-1],yices_mul(pw_e,temp)));
-                }
-            }
-        }
+    //             term_t temp=print_sym_yices(*(multinomial*)(a.second));
+    //             // std::cout<<"yices Term:\n------------------------------";
+    //             // yices_pp_term(stdout, temp, 80, 8, 0);
+    //             // std::cout<<"===============\n";
+    //             if(a.first==0){
+    //                 term_t temp_ans=yices_add(ans[ans.size()-1],temp);
+    //                 ans.push_back(temp_ans);
+    //             }
+    //             else{
+    //                 term_t pw_e=yices_power(e_yices[m.prim_key->get_id()],a.first);
+    //                 ans.push_back(yices_add(ans[ans.size()-1],yices_mul(pw_e,temp)));
+    //             }
+    //         }
+    //     }
 
-        //std::cout<<ans<<"\n";
-        // std::cout<<"yices Term:\n------------------------------";
-        // yices_pp_term(stdout, ans[ans.size()-1], 80, 8, 0);
-        // std::cout<<"===============\n";
-        return ans[ans.size()-1];
-    }
+    //     //std::cout<<ans<<"\n";
+    //     // std::cout<<"yices Term:\n------------------------------";
+    //     // yices_pp_term(stdout, ans[ans.size()-1], 80, 8, 0);
+    //     // std::cout<<"===============\n";
+    //     return ans[ans.size()-1];
+    // }
 bool smt_query(std::vector<handelman::expr>& e_check,std::vector<std::pair<double,double>> &coords ){
     z3::solver s(*c);
     z3::params p(*c);
@@ -836,52 +836,52 @@ bool solve(int silent,std::map<int, double> &sub_map,std::string solver_type="z3
             
             
 
-            yices_init();
-            ctx_config_t* config= yices_new_config();
-            yices_set_config(config, "solver-type", "mcsat");
-            yices_default_config_for_logic(config,"QF_NIA");
+            // yices_init();
+            // ctx_config_t* config= yices_new_config();
+            // yices_set_config(config, "solver-type", "mcsat");
+            // yices_default_config_for_logic(config,"QF_NIA");
 
-            context_t *ctx=yices_new_context(config);
+            // context_t *ctx=yices_new_context(config);
 
-
-            
 
             
-            for(int i=0;i<n;i++){
-                const char* myCString = ("var_"+std::to_string(i)).c_str();
-                term_t t = yices_new_uninterpreted_term(yices_real_type());
-                yices_set_term_name(t,myCString);
-                e_yices.push_back(t);
-            }
-            //add equations to solver::
-            for(auto &a: eq){
-                //print_vector(a->print());
-                term_t e_=print_sym_yices(*a);
-                // std::cout<<"yices Term:\n------------------------------";
-                // yices_pp_term(stdout, e_, 80, 8, 0);
-                // std::cout<<"===============\n";
-                yices_assert_formula(ctx,yices_arith_eq_atom(e_,yices_zero()));
-            }
-            if(silent){
-            std::cout<<"INEQ===========\n============\n";
-            }
-            for(auto &a: ineq){
-                //print_vector(a->print());
-                term_t e_=print_sym_yices(*a);
-                //std::cout<<e_;
-                yices_assert_formula(ctx,yices_arith_geq_atom(e_,yices_zero()));
-            }
-            auto result = yices_check_context(ctx, NULL);
-            if (result == STATUS_SAT) {
-                return true;
-            } else if (result == STATUS_UNSAT) {
-                return false;
-            } else {
-                return false;
-            }
 
-            yices_free_context(ctx);
-            yices_exit();
+            
+            // for(int i=0;i<n;i++){
+            //     const char* myCString = ("var_"+std::to_string(i)).c_str();
+            //     term_t t = yices_new_uninterpreted_term(yices_real_type());
+            //     yices_set_term_name(t,myCString);
+            //     e_yices.push_back(t);
+            // }
+            // //add equations to solver::
+            // for(auto &a: eq){
+            //     //print_vector(a->print());
+            //     term_t e_=print_sym_yices(*a);
+            //     // std::cout<<"yices Term:\n------------------------------";
+            //     // yices_pp_term(stdout, e_, 80, 8, 0);
+            //     // std::cout<<"===============\n";
+            //     yices_assert_formula(ctx,yices_arith_eq_atom(e_,yices_zero()));
+            // }
+            // if(silent){
+            // std::cout<<"INEQ===========\n============\n";
+            // }
+            // for(auto &a: ineq){
+            //     //print_vector(a->print());
+            //     term_t e_=print_sym_yices(*a);
+            //     //std::cout<<e_;
+            //     yices_assert_formula(ctx,yices_arith_geq_atom(e_,yices_zero()));
+            // }
+            // auto result = yices_check_context(ctx, NULL);
+            // if (result == STATUS_SAT) {
+            //     return true;
+            // } else if (result == STATUS_UNSAT) {
+            //     return false;
+            // } else {
+            //     return false;
+            // }
+
+            // yices_free_context(ctx);
+            // yices_exit();
         }
         else if(solver_type=="pgd"){
             //not complete implementation::

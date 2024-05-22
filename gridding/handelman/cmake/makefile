@@ -1,9 +1,11 @@
 # Define the compiler and compiler flags
 CXX = g++
 CXXFLAGS = -std=c++14 -Wall -m64 -g 
-INC      = /home/poqer/opt/gurobi1100/linux64/include -I/home/poqer/Desktop/z3/src/api -I/home/poqer/Desktop/z3/src/api/c++ -I/home/poqer/Desktop/yices-2.6.4/include 
-CPPLIB     = /home/poqer/opt/gurobi1100/linux64/lib -L/home/poqer/Desktop/yices-2.6.4/lib -L/home/poqer/Desktop/z3/build
-LINK_LIBS = /home/poqer/opt/gurobi1100/linux64/lib/libgurobi_c++.a /home/poqer/opt/gurobi1100/linux64/lib/libgurobi110.so /home/poqer/Desktop/yices-2.6.4/lib/libyices.so /home/poqer/Desktop/z3/build/libz3.so
+PROJ_HOME=/home/poqer/Destkop
+GUROBI_PATH=/home/poqer/opt
+INC      = $(GUROBI_PATH)/gurobi1100/linux64/include -I$(PROJ_HOME)/z3/src/api -I$(PROJ_HOME)/z3/src/api/c++ 
+CPPLIB     = $(GUROBI_PATH)/gurobi1100/linux64/lib -L$(PROJ_HOME)/z3/build
+LINK_LIBS = $(GUROBI_PATH)/gurobi1100/linux64/lib/libgurobi_c++.a $(GUROBI_PATH)/gurobi1100/linux64/lib/libgurobi110.so $(PROJ_HOME)/z3/build/libz3.so
 HELPER_LIBS= -lpthread -lboost_thread -lm
 # Directories (relative to the location of the Makefile)
 SRCDIR = ../src

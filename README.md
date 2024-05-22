@@ -22,16 +22,21 @@
 
 # Configuring libary paths
     export PROJ_HOME="/home/poqer/Desktop" #this is just an example
-    export GUROBI_HOME="${PROJ_HOME}/opt/gurobi1100/linux64"
+
+    <!-- export GUROBI_PATH="/home/poqer/opt"
+    export GUROBI_HOME="${GUROBI_PATH}/gurobi1100/linux64" -->
+
     export GRB_LICENSE_FILE="${PROJ_HOME}/gurobi.lic"
-    export PATH="${PATH}:${GUROBI_HOME}/bin"
-    export PATH="${PATH}:/usr/bin/python3.8"
+
+    <!-- export PATH="${PATH}:${GUROBI_HOME}/bin" -->
+
+    <!-- export PATH="${PATH}:/usr/bin/python3.8"
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${PROJ_HOME}/z3/build"
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${PROJ_HOME}/yices-2.6.4/lib"
     export JAVA_HOME="/usr/lib/jvm/jdk-18"
     export JDK_HOME="/usr/lib/jvm/jdk-18"
-    export PATH="${PATH}:${JAVA_HOME}/bin"
+    export PATH="${PATH}:${JAVA_HOME}/bin" -->
 
 # Understanding the tool api
    ## GRAMMER RULES::
