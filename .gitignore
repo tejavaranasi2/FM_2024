@@ -6,6 +6,7 @@ DryadSynth
 gridding/POQER
 gridding/src
 /tests/
+/boost_1_61_0.tar
 gridding/handelman/tests/nra_adt/nra_adt_modified/**
 gridding/handelman/tests/nra_adt/nra_adt_with_bounds/**
 gridding/handelman/tests/nra_adt/nra_adt_poqer/**
