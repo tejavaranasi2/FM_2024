@@ -119,13 +119,13 @@ def run_file_parallel(directory_,file):
 
 # Function for each thread to execute
 def worker():
+    global worklist
     while True:
         # Acquire lock to safely access the worklist
         lock.acquire()
         try:
             # Get the next item from the worklist
             item = worklist.pop(0)
-            lock.release()
         except IndexError:
             # If worklist is empty, release the lock and exit the thread
             lock.release()
@@ -133,6 +133,7 @@ def worker():
             break
         finally:
             # Release the lock
+            lock.release()
             print("here2=-=-=-=-=-=0=-=-=-=-=-=-==-=-=-=\n",item)
             
         # Process the item
@@ -163,15 +164,24 @@ def get_rerun_files():
                     else:
                         results[i]["timeout"]+=1
 
-
+    for i in range(3):
+        if(i==0):
+         print("PAQER")
+        elif(i==1):
+         print("z3EG")
+        else:
+         print("z3")
+        print(results[i])
     return all_files
 # Define your worklist here
 worklist = get_files(directory)  # Example worklist with 50 tasks
+print(worklist)
 all_files=[]
+print(all_files)
 # Create a lock
 lock = threading.Lock()
 
-N_threads=int(sys.argv[1])
+N_threads=int(sys.argv[3])
 # Create and start N_theads
 threads = []
 for _ in range(N_threads):

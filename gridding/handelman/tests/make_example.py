@@ -4,6 +4,9 @@ from parser_example_creation import set_N_changes
 import sys
 import os
 import subprocess
+
+sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**6)
 data = '''
 (assert (= (+ x 2) 5))
 (declare-const x Real)

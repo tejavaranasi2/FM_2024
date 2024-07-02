@@ -3,9 +3,9 @@ CXX = g++
 CXXFLAGS = -std=c++14 -Wall -m64 -g 
 PROJ_HOME=/opt/PAQER
 GUROBI_PATH=/opt/gurobi
-INC      = $(GUROBI_PATH)/linux64/include -I$(PROJ_HOME)/z3/src/api -I$(PROJ_HOME)/z3/src/api/c++ -I$(PROJ_HOME)/boost_1_61_0
-CPPLIB     = $(GUROBI_PATH)/linux64/lib 
-LINK_LIBS = $(GUROBI_PATH)/linux64/lib/libgurobi_c++.a $(GUROBI_PATH)/linux64/lib/libgurobi110.so $(PROJ_HOME)/z3/build/libz3.so
+INC      = $(GUROBI_PATH)/linux/include -I$(PROJ_HOME)/z3/src/api -I$(PROJ_HOME)/z3/src/api/c++ -I$(PROJ_HOME)/boost_1_61_0
+CPPLIB     = $(GUROBI_PATH)/linux/lib 
+LINK_LIBS = $(GUROBI_PATH)/linux/lib/libgurobi_c++.a $(GUROBI_PATH)/linux/lib/libgurobi110.so $(PROJ_HOME)/z3/build/libz3.so
 HELPER_LIBS= -lpthread -lm -lboost_thread 
 # Directories (relative to the location of the Makefile)
 SRCDIR = ../src

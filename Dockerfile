@@ -10,7 +10,7 @@ RUN apt-get -y install cmake libblkid-dev e2fslibs-dev libboost-all-dev libaudit
 RUN apt-get -y install z3
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib/:/usr/bin/z3/"
 
-#RUn cd /opt/PAQER/z3/ && python scripts/mk_make.py
+RUN cd /opt/PAQER/z3/ && python scripts/mk_make.py
 RUN cd /opt/PAQER/z3/build && make 
 RUN cd /opt/PAQER/z3/build && make install
 # RUN cd /opt/PAQER/z3 && python scripts/mk_make.py
